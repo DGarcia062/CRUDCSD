@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CRUDwebCSD.web.Dtos.ClienteDto>
+
+<h1>Techvalan</h1>
+
+<br />
+
+<a asp-action="Crear" class="btn btn-outline-primary"><i class="fa-solid fa-folder-plus"></i> Crear Cliente</a>
+
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.IdCliente"><i class="fa-solid fa-pencil"></i> Editar</a> 
+                    <a class="text-success" asp-action="Detalles" asp-route-id="@item.IdCliente"><i class="fa-solid fa-folder-open"></i> Detalles</a>
+                    <a asp-action="Eliminar" asp-route-id="@item.IdCliente" class="text-danger m1-1" onclick="return confirm ('¿Deseas eliminar este registro?')"><i class="fa fa-trash-alt fa-lg"></i> Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
